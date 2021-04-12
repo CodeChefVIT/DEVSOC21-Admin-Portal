@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap');
+
+
+body{
+    background-color: rgb(0, 0, 27);
+}
+
+
+.header-container{
+    position: relative;
+    margin: 2.5% 2%;
+}
+
+
+.header-container #brand{
+    display: inline-block;
+}
+
+.header-container #brand h3{
+    background-image: linear-gradient(45deg, rgb(0, 40, 172), rgb(68, 202, 255));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+}
+
+.header-container #teams h3{
+    display: inline-block;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    margin-top: 1.5%;
+}
+
+.header-container #teams h3 span{
+    display: inline-block;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    
+}
+
+.search-container{
+    height: 20vh;
+}
+
+.search-container form{
+    display: flex;
+    justify-content: center;
+
+}
+
+#search{
+    /* display: inline-block; */
+    background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+    color: whitesmoke;
+    padding: 1% 7.5% 1% 2%;
+    border: 5px solid transparent;
+    border-radius: 1rem;
+    display:inline-block;
+    margin: 2.5% 3.5%;
+    outline:none;
+    font-size: 1.1rem;
+    width: 25%;
+    font-weight: 500;
+}
+
+#search::placeholder{
+    color: white;
+}
+
+
+
+#filterteams{
+    background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+    color: whitesmoke;
+    padding: 0% 2.5%;
+    border: 5px solid transparent;
+    border-radius: 1rem;
+    display:inline-block;
+    margin: 2.5% 1.5%;
+    outline:none;
+    font-size: 1.2rem;
+    width: 15%;
+    height: 60px;
+}
+
+#filterteams option{
+    background-color: rgb(37, 0, 80);
+    padding: 15px;
+    margin: 20px;
+    font-size: 1.5rem;
+    height: 20px;
+    color: white;
+}
+
+
+.summary{	
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:bold;
+	font-size: 1.7rem;;
+	background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+    border: 5px solid transparent;
+    border-radius: 1rem;
+	/* border-radius:30px; */
+    /* width: 100%; */
+    height: 100%;
+    margin: 5% 7%;
+}
+
+.text{
+	display:flex;
+	justify-content:space-around;
+	flex-wrap: wrap;
+    
+}
+
+.text > .team, .text > .members, .text > .submitted{
+    color: whitesmoke;
+    font-size: 2.5rem;
+    padding: 2.5%;
+}
+
+
+.text > .submitted{
+    background-image: linear-gradient(45deg, rgb(0, 40, 172), rgb(68, 202, 255));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+
+.dropdown{	
+	height: 47px;
+	width: 212px;
+	background-color: rgb(37, 0, 80);
+	color: white;
+    background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+    border: 5px solid transparent;
+    border-radius: 1rem;
+    margin: 5%;
+}
+
+
+.zip{
+	display: flex;	
+	justify-content: center;
+	float: right;
+	width: 138px;
+	height: 50px;
+	background-color: #6F57FF;
+	border-radius: 15px;
+    margin: 5%;
+    outline: none;
+}
+
+.zip > img{
+	margin-top: 5px;
+	background-color: #6F57FF;
+	height: 30px;	
+}
+
+
+
+.summary a{
+    color: white;
+    text-decoration: none;
+    margin: 5% 15%;
+}
+
+
+
+
+
+
+

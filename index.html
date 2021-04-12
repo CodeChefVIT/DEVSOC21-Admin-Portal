@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devsoc Admin Portal</title>
+
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="header-container">
+
+            <div id="brand">
+
+                <h3>DEVSOC'21</h3>
+
+            </div>
+
+            <div id="teams">
+
+                <h3>Teams-<span>306</span></h3>
+
+            </div>
+
+
+        </div>
+
+
+
+        <nav>
+
+            <div class="image-profile" id="profileicon">
+
+                <i class='fas fa-user-alt' style='font-size:24px'></i>
+
+
+            </div>
+
+
+        </nav>
+
+    </header>
+
+
+
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search the Team" name="search" id="search">
+            <select name="filterteams" id="filterteams">
+                <option value="all">All</option>
+                <option value="submitted">Submitted</option>
+                <option value="not submitted">Not submitted</option>
+            </select>
+        </form>
+    </div>
+
+
+    <div class="summary">
+
+        <div class="text">
+            <h1 class="team">Team Lakhan</h1>
+            <h1 class="members"> Members - 5 </h1>
+            <h1 class="submitted"> Submitted</h1>
+            <p class="names">Rishav Karan Sumit Himanshu Shubh</p>
+        </div>
+
+        <select name="qualifiedstatus" class="dropdown">
+            <option value="qualified">Qualified</option>
+            <option value="notqualified">Not qualified</option>
+            <option value="review">Under review</option>
+        </select>
+
+        <button type="submit" class="zip">
+            <img src="zip.png" alt="Save icon" />
+        </button>
+
+        <a href="#">Submission details > </a>
+
+    </div>
+
+
+</body>
+
+</html>
