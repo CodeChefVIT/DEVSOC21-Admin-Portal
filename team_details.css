@@ -132,6 +132,8 @@
 	border-radius:16px;
 	width: 307px;
 	height: 62px;
+	outline:none;
+	border: none;
    }
    .contact {		 
 	 order: 1;
@@ -169,6 +171,8 @@
 	 border-radius:16px;
 	 width: 307px;
 	 height: 62px;
+	 outline:none;
+	border: none;
    }
    
    .rplk{
@@ -194,6 +198,8 @@
 	 border-radius:16px;
 	 width: 307px;
 	 height: 62px;
+	 outline:none;
+	border: none;
    }
    
    .desc{
@@ -218,6 +224,8 @@
 	 background-color: #120048;
 	 border-radius:16px;
 	 width: 1255px;
+	 outline:none;
+	border: none;
 	 height: 197px;
    }
 
