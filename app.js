@@ -1,25 +1,32 @@
 const base = 'https://devsoc-test.herokuapp.com'
+document.getElementById('auth').addEventListener('click', function auth () {
+  const data = JSON.stringify({
+    email: document.getElementById('uid').value,
+    password: document.getElementById('pass').value
+  })
 
-const data = JSON.stringify({
-  email: 'ccisbest@gmail.com',
-  password: 'enimasinobhaniyo'
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = false
+  xhr.responseType = 'json'
+
+  xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === 4) {
+      if (xhr.status == 200) {
+        console.log(this.response.success)
+        window.localStorage.setItem('jwttoken', this.response.token)
+        load(this.response.token)
+      }
+      else{
+        alert('retry')
+      }
+    }
+  })
+
+  xhr.open('POST', base + '/admin/login')
+  xhr.setRequestHeader('Content-Type', 'application/json')
+
+  xhr.send(data)
 })
-
-const xhr = new XMLHttpRequest()
-xhr.withCredentials = false
-xhr.responseType = 'json'
-
-xhr.addEventListener('readystatechange', function () {
-  if (this.readyState === 4) {
-    window.localStorage.setItem('jwttoken', this.response.token)
-    load(this.response.token)
-  }
-})
-
-xhr.open('POST', base + '/admin/login')
-xhr.setRequestHeader('Content-Type', 'application/json')
-
-xhr.send(data)
 
 function load (token) {
   const xhr1 = new XMLHttpRequest()
