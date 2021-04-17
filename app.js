@@ -11,6 +11,7 @@ xhr.responseType = 'json'
 
 xhr.addEventListener('readystatechange', function () {
   if (this.readyState === 4) {
+    window.localStorage.setItem('jwttoken', this.response.token)
     load(this.response.token)
   }
 })
@@ -75,7 +76,7 @@ function display (teamlist) {
           <img src="zip.png" alt="Save icon" />
       </button>-->
       </div>
-      <a href="team_details.html" class="submit1" onclick="myfunction('${teamlist[i].leader._id}')">Submission details > </a>
+      <a class="submit1" onclick="myfunction('${teamlist[i]._id}')">Submission details > </a>
       </div>
   </div>
       `
@@ -102,7 +103,41 @@ searchBar.addEventListener('keyup', (e) => {
 })
 
 function myfunction (a) {
-  alert(a)
+  const jwttoken = window.localStorage.getItem('jwttoken')
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = false
+  xhr.responseType = 'json'
+
+  xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === 4) {
+      console.log(this.response.team)
+      window.localStorage.setItem('teaminfo', JSON.stringify(this.response.team))
+      const newWindow = window.open('team_details.html')
+      const teaminfo = JSON.parse(window.localStorage.getItem('teaminfo'))
+      newWindow.onload = function () {
+        newWindow.console.log(teaminfo)
+        newWindow.document.getElementById('team').innerHTML = 'Team ' + teaminfo.name
+        let i
+        let memname = ''
+        for (i = 0; i < teaminfo.users.length; i++) {
+          memname += teaminfo.users[i].name + ' '
+        }
+        newWindow.document.getElementById('names').innerHTML = memname
+        newWindow.document.getElementById('submitted').innerHTML = '| ' + teaminfo.submission.status
+        newWindow.document.getElementById('members').innerHTML = '| Members- ' + teaminfo.users.length
+        if (teaminfo.submission.status != 'Not Submitted') {
+          newWindow.document.getElementById('name').value = teaminfo.submission.name
+          newWindow.document.getElementById('msg').value = teaminfo.submission.videolink
+          newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
+          newWindow.document.getElementById('projdesc').innerHTML = teaminfo.submission.description
+        }
+      }
+    }
+  })
+
+  xhr.open('GET', 'https://devsoc-test.herokuapp.com/admin/team/' + a.toString())
+  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
+  xhr.send()
 }
 
 const a = document.getElementById('filterteams')
@@ -115,15 +150,15 @@ const g = document.getElementById('notshortlisted2')
 const h = document.getElementById('selected')
 const teamnames = JSON.parse(window.localStorage.getItem('teams'))
 a.addEventListener('click', function () {
-  const optiontext=a.options[a.selectedIndex].text
+  const optiontext = a.options[a.selectedIndex].text
   const filteredCharacters = teamnames.filter((character) => {
     return (
-      character.submission.status==optiontext
+      character.submission.status == optiontext
     )
   })
-  if (filteredCharacters.length === 0 && optiontext!='All') {
+  if (filteredCharacters.length === 0 && optiontext != 'All') {
     document.getElementsByClassName('cont')[0].innerHTML = 'No Results Found'
-  } else if(filteredCharacters.length === 0 && optiontext=='All'){
+  } else if (filteredCharacters.length === 0 && optiontext == 'All') {
     display(teamnames)
   } else {
     document.getElementsByClassName('cont')[0].innerHTML = ''
