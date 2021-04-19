@@ -150,11 +150,22 @@ function myfunction (a) {
           newWindow.document.getElementById('name').value = teaminfo.submission.name
           newWindow.document.getElementById('msg').value = teaminfo.submission.videolink
           newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
-          let clean = window.DOMPurify.sanitize( marked(teaminfo.submission.description) )
-          const clean1 = clean.replaceAll("style", "");
-          newWindow.console.log(clean1)
+
+
+          let clean = window.DOMPurify.sanitize( marked(teaminfo.submission.description) )   
+          const reg = /script/ig; 
+          /*|iframe|form|object|embed|link|head|meta*/
+          
+          const scripts=['script','iframe','form','object','embed','link','head','meta','alert', 'style','img','body','html'];          
+
+          for(let k=0;k<scripts.length;k++)
+          {
+            clean=clean.replaceAll(scripts[k],"");
+          }         
+          
+          newWindow.console.log(clean)
           //let clean = DOMPurify.sanitize( marked(teaminfo.submission.description) , {USE_PROFILES: {html: true}} )
-          newWindow.document.getElementById('projdesc').innerHTML = clean1
+          newWindow.document.getElementById('projdesc').innerHTML = clean
         }
       }
     }
