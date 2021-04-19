@@ -227,7 +227,7 @@
 	 width: 1255px;
 	 outline:none;
 	 border: none;
-	 height: 197px;
+	 min-height: 197px;
    }
 
 

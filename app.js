@@ -150,7 +150,9 @@ function myfunction (a) {
           newWindow.document.getElementById('name').value = teaminfo.submission.name
           newWindow.document.getElementById('msg').value = teaminfo.submission.videolink
           newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
-          newWindow.document.getElementById('projdesc').innerHTML = marked(teaminfo.submission.description)
+          let clean = window.DOMPurify.sanitize( marked(teaminfo.submission.description) )
+          //let clean = DOMPurify.sanitize( marked(teaminfo.submission.description) , {USE_PROFILES: {html: true}} )
+          newWindow.document.getElementById('projdesc').innerHTML = clean
         }
       }
     }
