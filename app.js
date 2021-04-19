@@ -151,8 +151,10 @@ function myfunction (a) {
           newWindow.document.getElementById('msg').value = teaminfo.submission.videolink
           newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
           let clean = window.DOMPurify.sanitize( marked(teaminfo.submission.description) )
+          const clean1 = clean.replaceAll("style", "");
+          newWindow.console.log(clean1)
           //let clean = DOMPurify.sanitize( marked(teaminfo.submission.description) , {USE_PROFILES: {html: true}} )
-          newWindow.document.getElementById('projdesc').innerHTML = clean
+          newWindow.document.getElementById('projdesc').innerHTML = clean1
         }
       }
     }
