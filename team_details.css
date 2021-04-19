@@ -214,7 +214,7 @@
 	 font-size: 24px;
    }
    
-   .desc > textarea{
+   #projdesc{
 	 font-family: Montserrat;
 	 font-style: normal;
 	 font-weight: 600;
@@ -226,7 +226,7 @@
 	 border-radius:16px;
 	 width: 1255px;
 	 outline:none;
-	border: none;
+	 border: none;
 	 height: 197px;
    }
 

@@ -150,7 +150,7 @@ function myfunction (a) {
           newWindow.document.getElementById('name').value = teaminfo.submission.name
           newWindow.document.getElementById('msg').value = teaminfo.submission.videolink
           newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
-          newWindow.document.getElementById('projdesc').innerHTML = teaminfo.submission.description
+          newWindow.document.getElementById('projdesc').innerHTML = marked(teaminfo.submission.description)
         }
       }
     }
