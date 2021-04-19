@@ -241,7 +241,7 @@
 	 margin: 1.5% 2% 2.5% 1.5%;
    }
    
-   .desc > textarea{
+   #projdesc{
 	 font-family: Montserrat;
 	 font-style: normal;
 	 font-weight: 500;
@@ -253,7 +253,7 @@
 	 border-radius:16px;
 	 width: 1255px;
 	 outline:none;
-	border: none;
+	 border: none;
 	 height: 197px;
    }
 
