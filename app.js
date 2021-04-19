@@ -1,33 +1,6 @@
 const base = 'https://devsoc-test.herokuapp.com'
-document.getElementById('auth').addEventListener('click', function auth () {
-  const data = JSON.stringify({
-    email: document.getElementById('uid').value,
-    password: document.getElementById('pass').value
-  })
 
-  const xhr = new XMLHttpRequest()
-  xhr.withCredentials = false
-  xhr.responseType = 'json'
-
-  xhr.addEventListener('readystatechange', function () {
-    if (this.readyState === 4) {
-      if (xhr.status == 200) {
-        console.log(this.response.success)
-        window.localStorage.setItem('jwttoken', this.response.token)
-        load(this.response.token)
-      }
-      else{
-        alert('retry')
-      }
-    }
-  })
-
-  xhr.open('POST', base + '/admin/login')
-  xhr.setRequestHeader('Content-Type', 'application/json')
-
-  xhr.send(data)
-})
-
+//index
 function load (token) {
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
@@ -35,10 +8,50 @@ function load (token) {
 
   xhr1.addEventListener('readystatechange', function () {
     if (this.readyState === 4) {
-      console.log(this.response.teams)
+      main.console.log(this.response.teams)
       const teamlist = this.response.teams
-      display(teamlist)
       window.localStorage.setItem('teams', JSON.stringify(teamlist))
+      main.document.getElementById('count').innerHTML = teamlist.length
+  let htmlString = ''
+  let i
+  for (i = 0; i < teamlist.length; i++) {
+    let memlist = ''
+    let j
+    for (j = 0; j < teamlist[i].users.length; j++) {
+      memlist = memlist + ' ' + teamlist[i].users[j].name
+    }
+    const id = teamlist[i].leader._id
+    htmlString = htmlString +
+      `
+      <div class="summary">
+
+      <div class="text">
+          <h1 class="team">Team ${teamlist[i].name}</h1>
+          <h1 class="members"> Members - ${teamlist[i].users.length} </h1>
+          <h1 class="submitted"> ${teamlist[i].submission.status}</h1>
+      </div>
+      <p class="names">${memlist}</p>
+      <div class="lrow">
+      <div class="lrow1">
+      <select name="qualifiedstatus" class="dropdown">
+          <option>Shortlisted For DEVSOC'21</option>
+          <option>Not Shortlisted For DEVSOC'21</option>
+          <option>Shortlisted For Round 2</option>
+          <option>Not Shortlisted For Round 2</option>
+          <option>Selected For Final Round</option>
+      </select>
+
+      <!--<button type="submit" class="zip">
+          <img src="zip.png" alt="Save icon" />
+      </button>-->
+      </div>
+      <a class="submit1" onclick="myfunction('${teamlist[i]._id}')">Submission details > </a>
+      </div>
+  </div>
+      `
+  }
+  main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
+      
     }
   })
 
@@ -90,7 +103,7 @@ function display (teamlist) {
   }
   document.getElementsByClassName('cont')[0].innerHTML = htmlString
 }
-
+//index
 const searchBar = document.getElementById('search')
 searchBar.addEventListener('keyup', (e) => {
   const teamnames = JSON.parse(window.localStorage.getItem('teams'))
@@ -108,7 +121,7 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-
+//team_details
 function myfunction (a) {
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
@@ -146,7 +159,7 @@ function myfunction (a) {
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.send()
 }
-
+//index
 const a = document.getElementById('filterteams')
 const b = document.getElementById('submitted')
 const c = document.getElementById('notsubmitted')
@@ -155,8 +168,10 @@ const e = document.getElementById('notshortlisted1')
 const f = document.getElementById('shortlisted2')
 const g = document.getElementById('notshortlisted2')
 const h = document.getElementById('selected')
-const teamnames = JSON.parse(window.localStorage.getItem('teams'))
+
+
 a.addEventListener('click', function () {
+  const teamnames = JSON.parse(window.localStorage.getItem('teams'))
   const optiontext = a.options[a.selectedIndex].text
   const filteredCharacters = teamnames.filter((character) => {
     return (
