@@ -106,6 +106,7 @@ function display (teamlist) {
 //index
 const searchBar = document.getElementById('search')
 searchBar.addEventListener('keyup', (e) => {
+  document.getElementById('filterteams').selectedIndex=0
   const teamnames = JSON.parse(window.localStorage.getItem('teams'))
   const searchString = e.target.value.toLowerCase()
 
@@ -161,14 +162,6 @@ function myfunction (a) {
 }
 //index
 const a = document.getElementById('filterteams')
-const b = document.getElementById('submitted')
-const c = document.getElementById('notsubmitted')
-const d = document.getElementById('shortlisted1')
-const e = document.getElementById('notshortlisted1')
-const f = document.getElementById('shortlisted2')
-const g = document.getElementById('notshortlisted2')
-const h = document.getElementById('selected')
-
 
 a.addEventListener('click', function () {
   const teamnames = JSON.parse(window.localStorage.getItem('teams'))
