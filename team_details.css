@@ -53,18 +53,31 @@
 	font-style: normal;
 	font-weight:bold;
 	font-size:30px;
-	border-style: solid;
-	border-width: 4px;
-	border-color: #25d8ff;
-	border-radius:30px;
+	background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+	border: 5px solid transparent;
+    border-radius: 2rem;
 }
 
 .text{
 	display:flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 	flex-wrap: wrap;
-	font-size:25px;
+	/* font-size:25px; */
 }
+
+
+.text h1{
+	font-size: 2.75rem;
+}
+
+.summary p{
+	font-size: 2rem;
+	margin: 2.5% 1%;
+}
+
+
 
 
 
@@ -72,14 +85,19 @@
 
 
 .dropdown{	
-	border-radius: 15px;
 	height: 47px;
 	width: 212px;
-	border-width: 4px;
-	border-color: #25d8ff;
 	float: right;
 	color: white;
 	background-color: #080020;
+	outline: none;
+	background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+	border: 5px solid transparent;
+    border-radius: 1rem;
+	font-size: 18px;
+	margin-top: 3.5%;
 }
 
 
@@ -120,18 +138,20 @@
 	 font-style: normal;
 	 font-weight: normal;
 	 font-size: 24px;
+	 margin: 1.5% 5% 5% 15%;
    }
    .message > input {
 	font-family: Montserrat;
 	font-style: normal;
-	font-weight: 600;
-	font-size: 24px;
+	/* margin-top: 3%; */
+	font-weight: 500;
+	font-size: 18px;
 	padding-left:10px;
 	padding-top:10px;
 	color:white; 
 	background-color: #120048;
 	border-radius:16px;
-	width: 307px;
+	width: 170%;
 	height: 62px;
 	outline:none;
 	border: none;
@@ -158,19 +178,20 @@
 	 font-style: normal;
 	 font-weight: normal;
 	 font-size: 24px;
+	 margin: 5% 15% 5% 5%; 
    }
    
    .idnm > input{
 	 font-family: Montserrat;
 	 font-style: normal;
-	 font-weight: 600;
-	 font-size: 24px;
+	 font-weight: 500;
+	 font-size: 20px;
 	 padding-left:10px;
 	 padding-top:15px;
 	 color:white; 
 	 background-color: #120048;
 	 border-radius:16px;
-	 width: 307px;
+	 width: 170%;
 	 height: 62px;
 	 outline:none;
 	border: none;
@@ -185,22 +206,27 @@
 	 font-style: normal;
 	 font-weight: normal;
 	 font-size: 24px;
+	 margin: 0% 1.5% 1.5% 2%;
    }
    
    .rplk > input{
 	font-family: Montserrat;
 	 font-style: normal;
-	 font-weight: 600;
-	 font-size: 24px;
+	 font-weight: 500;
+	 font-size: 20px;
 	 padding-left:10px;
 	 padding-top:15px;
 	 color:white; 
 	 background-color: #120048;
 	 border-radius:16px;
-	 width: 307px;
+	 width: 150%;
 	 height: 62px;
 	 outline:none;
 	border: none;
+   }
+
+   .desc > label{
+	   margin-bottom: 2.5%;
    }
    
    .desc{
@@ -212,13 +238,14 @@
 	 font-style: normal;
 	 font-weight: normal;
 	 font-size: 24px;
+	 margin: 1.5% 2% 2.5% 1.5%;
    }
    
    #projdesc{
 	 font-family: Montserrat;
 	 font-style: normal;
-	 font-weight: 600;
-	 font-size: 24px;
+	 font-weight: 500;
+	 font-size: 20px;
 	 padding-left:10px;
 	 padding-top:15px;
 	 color:white; 
