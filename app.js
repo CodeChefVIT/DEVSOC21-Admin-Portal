@@ -33,7 +33,8 @@ function load (token) {
       <p class="names">${memlist}</p>
       <div class="lrow">
       <div class="lrow1">
-      <select name="qualifiedstatus" class="dropdown">
+      <select name="qualifiedstatus" class="dropdown" id="dropdown">
+          <option value="" disabled selected>Select Status</option>
           <option>Shortlisted For DEVSOC'21</option>
           <option>Not Shortlisted For DEVSOC'21</option>
           <option>Shortlisted For Round 2</option>
@@ -85,6 +86,7 @@ function display (teamlist) {
       <div class="lrow">
       <div class="lrow1">
       <select name="qualifiedstatus" class="dropdown">
+          <option value="" disabled selected>Select Status</option>
           <option>Shortlisted For DEVSOC'21</option>
           <option>Not Shortlisted For DEVSOC'21</option>
           <option>Shortlisted For Round 2</option>
@@ -195,3 +197,30 @@ a.addEventListener('click', function () {
     display(filteredCharacters)
   }
 })
+
+
+var update = document.getElementById("dropdown");
+function show(){  
+var strUser = update.options[update.selectedIndex].text;  
+var sendata={
+  teamId: "606ddf7c4489410015adbdd7",
+  status: JSON.stringify(strUser)
+}
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
+
+xhr.send(sendata);  
+}
+update.onchange=show();
+
+
+
