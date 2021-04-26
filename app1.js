@@ -16,7 +16,7 @@ document.getElementById('auth').addEventListener('click', function auth () {
         if (xhr.status == 200) {
           console.log(this.response.success)
           window.localStorage.setItem('jwttoken', this.response.token)
-          main = window.open('index.html')
+          main = window.open('teamlist.html')
           main.onload=function() {
             const jwttoken1 = window.localStorage.getItem('jwttoken')
             main.console.log(jwttoken1)

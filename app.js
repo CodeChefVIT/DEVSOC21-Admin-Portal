@@ -1,7 +1,7 @@
 const base = 'https://devsoc-test.herokuapp.com'
 
 //index
-function load (token) {
+function load(token) {
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
   xhr1.responseType = 'json'
@@ -12,17 +12,17 @@ function load (token) {
       const teamlist = this.response.teams
       window.localStorage.setItem('teams', JSON.stringify(teamlist))
       main.document.getElementById('count').innerHTML = teamlist.length
-  let htmlString = ''
-  let i
-  for (i = 0; i < teamlist.length; i++) {
-    let memlist = ''
-    let j
-    for (j = 0; j < teamlist[i].users.length; j++) {
-      memlist = memlist + ' ' + teamlist[i].users[j].name
-    }
-    const id = teamlist[i].leader._id
-    htmlString = htmlString +
-      `
+      let htmlString = ''
+      let i
+      for (i = 0; i < teamlist.length; i++) {
+        let memlist = ''
+        let j
+        for (j = 0; j < teamlist[i].users.length; j++) {
+          memlist = memlist + ' ' + teamlist[i].users[j].name
+        }
+        const id = teamlist[i].leader._id
+        htmlString = htmlString +
+          `
       <div class="summary">
 
       <div class="text">
@@ -50,9 +50,9 @@ function load (token) {
       </div>
   </div>
       `
-  }
-  main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
-      
+      }
+      main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
+
     }
   })
 
@@ -62,7 +62,7 @@ function load (token) {
   xhr1.send()
 }
 
-function display (teamlist) {
+function display(teamlist) {
   document.getElementById('count').innerHTML = teamlist.length
   let htmlString = ''
   let i
@@ -108,7 +108,7 @@ function display (teamlist) {
 //index
 const searchBar = document.getElementById('search')
 searchBar.addEventListener('keyup', (e) => {
-  document.getElementById('filterteams').selectedIndex=0
+  document.getElementById('filterteams').selectedIndex = 0
   const teamnames = JSON.parse(window.localStorage.getItem('teams'))
   const searchString = e.target.value.toLowerCase()
 
@@ -125,7 +125,7 @@ searchBar.addEventListener('keyup', (e) => {
   }
 })
 //team_details
-function myfunction (a) {
+function myfunction(a) {
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = false
@@ -154,17 +154,16 @@ function myfunction (a) {
           newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
 
 
-          let clean = window.DOMPurify.sanitize( marked(teaminfo.submission.description) )   
-          const reg = /script/ig; 
+          let clean = window.DOMPurify.sanitize(marked(teaminfo.submission.description))
+          const reg = /script/ig;
           /*|iframe|form|object|embed|link|head|meta*/
-          
-          const scripts=['script','iframe','form','object','embed','link','head','meta','alert', 'style','img','body','html'];          
 
-          for(let k=0;k<scripts.length;k++)
-          {
-            clean=clean.replaceAll(scripts[k],"");
-          }         
-          
+          const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html'];
+
+          for (let k = 0; k < scripts.length; k++) {
+            clean = clean.replaceAll(scripts[k], "");
+          }
+
           newWindow.console.log(clean)
           //let clean = DOMPurify.sanitize( marked(teaminfo.submission.description) , {USE_PROFILES: {html: true}} )
           newWindow.document.getElementById('projdesc').innerHTML = clean
@@ -200,27 +199,38 @@ a.addEventListener('click', function () {
 
 
 var update = document.getElementById("dropdown");
-function show(){  
-var strUser = update.options[update.selectedIndex].text;  
-var sendata={
-  teamId: "606ddf7c4489410015adbdd7",
-  status: JSON.stringify(strUser)
-}
-
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener("readystatechange", function() {
-  if(this.readyState === 4) {
-    console.log(this.responseText);
+function show() {
+  var strUser = update.options[update.selectedIndex].text;
+  var sendata = {
+    teamId: "606ddf7c4489410015adbdd7",
+    status: JSON.stringify(strUser)
   }
-});
 
-xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
 
-xhr.send(sendata);  
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(this.responseText);
+    }
+  });
+
+  xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
+
+  xhr.send(sendata);
 }
-update.onchange=show();
+update.onchange = show();
+
+
+//adding logout functionality
+
+
+function logoutFunctn() {
+  // console.log("hello");
+  localStorage.clear();
+  window.location.assign("index.html")
+}
+
 
 
 
