@@ -219,14 +219,13 @@ a.addEventListener('click', function () {
 // update.onchange = show();
 
 
-// //adding logout functionality
+//adding logout functionality
 
 
-// function logoutFunctn() {
-//   // console.log("hello");
-//   localStorage.clear();
-//   window.location.assign("index.html")
-// }
+function logoutFunctn() {
+  localStorage.clear();
+  window.location.assign("index.html")
+}
 
 
 function patch1(a, b) {
