@@ -1,12 +1,7 @@
 const base = 'https://devsoc-test.herokuapp.com'
 
-<<<<<<< HEAD
-// index
-function load (token) {
-=======
 //index
 function load(token) {
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
   xhr1.responseType = 'json'
@@ -27,11 +22,7 @@ function load(token) {
         }
         const id = teamlist[i].leader._id
         htmlString = htmlString +
-<<<<<<< HEAD
-      `
-=======
           `
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
       <div class="summary">
 
       <div class="text">
@@ -131,41 +122,8 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-<<<<<<< HEAD
-
-
-function patch1 (a, b) {
-  console.log('yes')
-  const jwttoken = window.localStorage.getItem('jwttoken')
-  const data = JSON.stringify({
-    teamId: b,
-    status: a
-  })
-
-  const xhr = new XMLHttpRequest()
-  xhr.withCredentials = false
-  xhr.responseType = 'json'
-
-  xhr.addEventListener('readystatechange', function () {
-    if (this.readyState === 4) {
-      console.log(this.response)
-    }
-  })
-
-  xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
-  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
-  xhr.setRequestHeader('Content-Type', 'application/json')
-
-  xhr.send(data)
-}
-
-
-// team_details
-function myfunction (a) {
-=======
 //team_details
 function myfunction(a) {
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = false
@@ -200,11 +158,7 @@ function myfunction(a) {
           const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html']
 
           for (let k = 0; k < scripts.length; k++) {
-<<<<<<< HEAD
-            clean = clean.replaceAll(scripts[k], '')
-=======
             clean = clean.replaceAll(scripts[k], "");
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
           }
 
           newWindow.console.log(clean)
@@ -273,8 +227,6 @@ function logoutFunctn() {
   window.location.assign("index.html")
 }
 
-const updateselect=.document.getElementById('updatestat')
-console.log(updateselect)
 
 function patch1(a, b) {
   console.log('yes')
@@ -294,12 +246,9 @@ function patch1(a, b) {
     }
   })
 
-<<<<<<< HEAD
-=======
   xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.setRequestHeader('Content-Type', 'application/json')
 
   xhr.send(data)
 }
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
