@@ -1,7 +1,7 @@
 const base = 'https://devsoc-api.codechefvit.com'
 
-//index
-function load(token) {
+// index
+function load (token) {
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
   xhr1.responseType = 'json'
@@ -61,7 +61,32 @@ function load(token) {
   xhr1.send()
 }
 
-function display(teamlist) {
+function patch1 (a, b) {
+  console.log('yes')
+  const jwttoken = window.localStorage.getItem('jwttoken')
+  const data = JSON.stringify({
+    teamId: b,
+    status: a
+  })
+
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = false
+  xhr.responseType = 'json'
+
+  xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === 4) {
+      console.log(this.response)
+    }
+  })
+
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
+  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
+  xhr.setRequestHeader('Content-Type', 'application/json')
+
+  xhr.send(data)
+}
+
+function display (teamlist) {
   document.getElementById('count').innerHTML = teamlist.length
   let htmlString = ''
   let i
@@ -122,8 +147,8 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-//team_details
-function myfunction(a) {
+// team_details
+function myfunction (a) {
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = false
@@ -143,6 +168,17 @@ function myfunction(a) {
         for (i = 0; i < teaminfo.users.length; i++) {
           memname += teaminfo.users[i].name + ' '
         }
+        newWindow.document.getElementById('options').innerHTML=
+        `
+        <select name="qualifiedstatus" class="dropdown" id="updatestat" onchange="patch1(this.value,'${teaminfo._id}')">
+      <option value="" disabled selected>Select Status</option>
+      <option value="Shortlisted For DEVSOC'21">Shortlisted For DEVSOC'21</option>
+      <option value="Not Shortlisted For DEVSOC'21">Not Shortlisted For DEVSOC'21</option>
+      <option value="Shortlisted For Round 2">Shortlisted For Round 2</option>
+      <option value="Not Shortlisted For Round 2">Not Shortlisted For Round 2</option>
+      <option value="Selected For Final Round">Selected For Final Round</option>
+    </select>
+        `
         newWindow.document.getElementById('names').innerHTML = memname
         newWindow.document.getElementById('submitted').innerHTML = '| ' + teaminfo.submission.status
         newWindow.document.getElementById('members').innerHTML = '| Members- ' + teaminfo.users.length
@@ -158,7 +194,7 @@ function myfunction(a) {
           const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html']
 
           for (let k = 0; k < scripts.length; k++) {
-            clean = clean.replaceAll(scripts[k], "");
+            clean = clean.replaceAll(scripts[k], '')
           }
 
           newWindow.console.log(clean)
@@ -194,7 +230,6 @@ a.addEventListener('click', function () {
   }
 })
 
-
 // var update = document.getElementById("dropdown");
 // function show() {
 //   var strUser = update.options[update.selectedIndex].text;
@@ -218,13 +253,11 @@ a.addEventListener('click', function () {
 // }
 // update.onchange = show();
 
+// adding logout functionality
 
-//adding logout functionality
-
-
-function logoutFunctn() {
-  localStorage.clear();
-  window.location.assign("index.html")
+function logoutFunctn () {
+  localStorage.clear()
+  window.location.assign('index.html')
 }
 
 
