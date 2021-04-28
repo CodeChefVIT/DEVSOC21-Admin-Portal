@@ -1,4 +1,4 @@
-const base = 'https://devsoc-test.herokuapp.com'
+const base = 'https://devsoc-api.codechefvit.com'
 
 //index
 function load(token) {
@@ -55,7 +55,7 @@ function load(token) {
     }
   })
 
-  xhr1.open('GET', 'https://devsoc-test.herokuapp.com/admin/all')
+  xhr1.open('GET', 'https://devsoc-api.codechefvit.com/admin/all')
   xhr1.setRequestHeader('Authorization', 'Bearer ' + token)
 
   xhr1.send()
@@ -169,7 +169,7 @@ function myfunction(a) {
     }
   })
 
-  xhr.open('GET', 'https://devsoc-test.herokuapp.com/admin/team/' + a.toString())
+  xhr.open('GET', 'https://devsoc-api.codechefvit.com/admin/team/' + a.toString())
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.send()
 }
@@ -212,7 +212,7 @@ a.addEventListener('click', function () {
 //     }
 //   });
 
-//   xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
+//   xhr.open("PATCH", "{{https://devsoc-api.codechefvit.com}}/admin/status");
 
 //   xhr.send(sendata);
 // }
@@ -246,7 +246,7 @@ function patch1(a, b) {
     }
   })
 
-  xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.setRequestHeader('Content-Type', 'application/json')
 
