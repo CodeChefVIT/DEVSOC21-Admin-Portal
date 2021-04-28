@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devsoc Admin Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.7/purify.js"
+        integrity="sha512-cykannSnDFpOTvJtRx3erBPGuLEqbYqUj0aW6ofYfRSD9K6j8JePfsh29FZmkdISfKBgpu93izQ5PVprjlzcYA=="
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+
+        <div class="header-container">
+
+            <div id="brand">
+
+                <h3>DEVSOC'21</h3>
+
+            </div>
+
+            <div id="teams">
+
+                <h3>Teams-<span id="count"></span></h3>
+
+            </div>
+
+
+
+
+        </div>
+
+
+        <nav>
+
+            <button id="logout-button" onclick="logoutFunctn()"><a href="#">Log out</a></button>
+
+        </nav>
+
+
+
+
+
+    </header>
+
+
+
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search the Team" name="search" id="search">
+            <select name="filterteams" id="filterteams">
+                <option value="all selected">All</option>
+                <option value="submitted">Submitted</option>
+                <option value="notsubmitted">Not Submitted</option>
+                <option value="shortlisted1">Shortlisted For DEVSOC'21</option>
+                <option value="notshortlisted1">Not Shortlisted For DEVSOC'21</option>
+                <option value="shortlisted2">Shortlisted For Round 2</option>
+                <option value="notshortlisted2">Not Shortlisted For Round 2</option>
+                <option value="selected">Selected For Final Round</option>
+            </select>
+        </form>
+    </div>
+
+
+    <div class="cont">
+
+    </div>
+
+
+    <div class="pag-container">
+        <div id="pagination-wrapper"></div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

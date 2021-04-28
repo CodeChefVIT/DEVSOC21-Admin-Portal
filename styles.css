@@ -49,6 +49,33 @@ body{
     
 }
 
+
+#logout-button{
+    position: absolute;
+    top: 10%;
+    right: 2.5%;
+    float: right;
+    width: 15%;
+    background-color: rgb(0, 0, 27);
+    /* width: 10%; */
+    padding: 10px 5px;
+    outline: none;
+    background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+    border: 5px solid transparent;
+    border-radius: 1rem;
+    /* margin-top: -17.5%; */
+}
+
+#logout-button a{
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 10% 2.5%;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
 .search-container{
     height: 20vh;
 }
@@ -56,6 +83,7 @@ body{
 .search-container form{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
 }
 
@@ -72,7 +100,7 @@ body{
     margin: 2.5% 3.5%;
     outline:none;
     font-size: 1.6rem;
-    width: 25%;
+    /* width: 25%; */
     font-weight: 500;
 }
 
@@ -101,7 +129,7 @@ body{
 }
 
 #filterteams option{
-    background-color: rgb(37, 0, 80);
+    background-color: #080020;
     padding: 15px;
     margin: 20px;
     font-size: 1.5rem;
@@ -166,9 +194,12 @@ body{
     margin: 5%;
     padding-left:10px;
     font-size: 20px;
+    outline: none;
+    color: white;
+    background-color: #080020;
 }
 .dropdown option{
-    color:#000000;
+    color:whitesmoke;
 }
 
 
@@ -195,6 +226,7 @@ body{
     color: white;
     text-decoration: none;
     margin: 5% 15%;
+    cursor: pointer;
 }
 .names{
     display: flex;
@@ -206,10 +238,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .lrow1{
     display: flex;
     margin-left:50px;
+    flex-wrap: wrap;
 }
 
 .cont{
@@ -220,6 +254,7 @@ body{
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
+    flex-wrap: wrap;
 }
 
 
