@@ -1,6 +1,6 @@
 const base = 'https://devsoc-test.herokuapp.com'
 
-//index
+// index
 function load (token) {
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
@@ -12,16 +12,16 @@ function load (token) {
       const teamlist = this.response.teams
       window.localStorage.setItem('teams', JSON.stringify(teamlist))
       main.document.getElementById('count').innerHTML = teamlist.length
-  let htmlString = ''
-  let i
-  for (i = 0; i < teamlist.length; i++) {
-    let memlist = ''
-    let j
-    for (j = 0; j < teamlist[i].users.length; j++) {
-      memlist = memlist + ' ' + teamlist[i].users[j].name
-    }
-    const id = teamlist[i].leader._id
-    htmlString = htmlString +
+      let htmlString = ''
+      let i
+      for (i = 0; i < teamlist.length; i++) {
+        let memlist = ''
+        let j
+        for (j = 0; j < teamlist[i].users.length; j++) {
+          memlist = memlist + ' ' + teamlist[i].users[j].name
+        }
+        const id = teamlist[i].leader._id
+        htmlString = htmlString +
       `
       <div class="summary">
 
@@ -49,9 +49,8 @@ function load (token) {
       </div>
   </div>
       `
-  }
-  main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
-      
+      }
+      main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
     }
   })
 
@@ -84,12 +83,12 @@ function display (teamlist) {
       <p class="names">${memlist}</p>
       <div class="lrow">
       <div class="lrow1">
-      <select name="qualifiedstatus" class="dropdown">
-          <option>Shortlisted For DEVSOC'21</option>
-          <option>Not Shortlisted For DEVSOC'21</option>
-          <option>Shortlisted For Round 2</option>
-          <option>Not Shortlisted For Round 2</option>
-          <option>Selected For Final Round</option>
+      <select name="qualifiedstatus" class="dropdown" onchange="patch1(this.value,'${teamlist[i]._id}')">
+          <option value="Shortlisted For DEVSOC'21">Shortlisted For DEVSOC'21</option>
+          <option value="Not Shortlisted For DEVSOC'21">Not Shortlisted For DEVSOC'21</option>
+          <option value="Shortlisted For Round 2">Shortlisted For Round 2</option>
+          <option value="Not Shortlisted For Round 2">Not Shortlisted For Round 2</option>
+          <option value="Selected For Final Round">Selected For Final Round</option>
       </select>
 
       <!--<button type="submit" class="zip">
@@ -103,10 +102,10 @@ function display (teamlist) {
   }
   document.getElementsByClassName('cont')[0].innerHTML = htmlString
 }
-//index
+// index
 const searchBar = document.getElementById('search')
 searchBar.addEventListener('keyup', (e) => {
-  document.getElementById('filterteams').selectedIndex=0
+  document.getElementById('filterteams').selectedIndex = 0
   const teamnames = JSON.parse(window.localStorage.getItem('teams'))
   const searchString = e.target.value.toLowerCase()
 
@@ -122,7 +121,35 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-//team_details
+
+
+function patch1 (a, b) {
+  console.log('yes')
+  const jwttoken = window.localStorage.getItem('jwttoken')
+  const data = JSON.stringify({
+    teamId: b,
+    status: a
+  })
+
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = false
+  xhr.responseType = 'json'
+
+  xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === 4) {
+      console.log(this.response)
+    }
+  })
+
+  xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
+  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
+  xhr.setRequestHeader('Content-Type', 'application/json')
+
+  xhr.send(data)
+}
+
+
+// team_details
 function myfunction (a) {
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
@@ -151,20 +178,18 @@ function myfunction (a) {
           newWindow.document.getElementById('msg').value = teaminfo.submission.videolink
           newWindow.document.getElementById('repolink').value = teaminfo.submission.githubLink
 
+          let clean = window.DOMPurify.sanitize(marked(teaminfo.submission.description))
+          const reg = /script/ig
+          /* |iframe|form|object|embed|link|head|meta */
 
-          let clean = window.DOMPurify.sanitize( marked(teaminfo.submission.description) )   
-          const reg = /script/ig; 
-          /*|iframe|form|object|embed|link|head|meta*/
-          
-          const scripts=['script','iframe','form','object','embed','link','head','meta','alert', 'style','img','body','html'];          
+          const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html']
 
-          for(let k=0;k<scripts.length;k++)
-          {
-            clean=clean.replaceAll(scripts[k],"");
-          }         
-          
+          for (let k = 0; k < scripts.length; k++) {
+            clean = clean.replaceAll(scripts[k], '')
+          }
+
           newWindow.console.log(clean)
-          //let clean = DOMPurify.sanitize( marked(teaminfo.submission.description) , {USE_PROFILES: {html: true}} )
+          // let clean = DOMPurify.sanitize( marked(teaminfo.submission.description) , {USE_PROFILES: {html: true}} )
           newWindow.document.getElementById('projdesc').innerHTML = clean
         }
       }
@@ -175,7 +200,7 @@ function myfunction (a) {
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.send()
 }
-//index
+// index
 const a = document.getElementById('filterteams')
 
 a.addEventListener('click', function () {
@@ -195,3 +220,5 @@ a.addEventListener('click', function () {
     display(filteredCharacters)
   }
 })
+
+
