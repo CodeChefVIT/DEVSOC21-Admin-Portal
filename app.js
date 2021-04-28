@@ -1,3 +1,4 @@
+
 const base = 'https://devsoc-test.herokuapp.com'
 
 // index
@@ -8,10 +9,10 @@ function load (token) {
 
   xhr1.addEventListener('readystatechange', function () {
     if (this.readyState === 4) {
-      main.console.log(this.response.teams)
+      console.log(this.response.teams)
       const teamlist = this.response.teams
       window.localStorage.setItem('teams', JSON.stringify(teamlist))
-      main.document.getElementById('count').innerHTML = teamlist.length
+      document.getElementById('count').innerHTML = teamlist.length
       let htmlString = ''
       let i
       for (i = 0; i < teamlist.length; i++) {
@@ -33,15 +34,14 @@ function load (token) {
       <p class="names">${memlist}</p>
       <div class="lrow">
       <div class="lrow1">
-      <select name="qualifiedstatus" class="dropdown" id="dropdown">
+      <select name="qualifiedstatus" class="dropdown" onchange="patch1(this.value,'${teamlist[i]._id}')">
           <option value="" disabled selected>Select Status</option>
-          <option>Shortlisted For DEVSOC'21</option>
-          <option>Not Shortlisted For DEVSOC'21</option>
-          <option>Shortlisted For Round 2</option>
-          <option>Not Shortlisted For Round 2</option>
-          <option>Selected For Final Round</option>
+          <option value="Shortlisted For DEVSOC'21">Shortlisted For DEVSOC'21</option>
+          <option value="Not Shortlisted For DEVSOC'21">Not Shortlisted For DEVSOC'21</option>
+          <option value="Shortlisted For Round 2">Shortlisted For Round 2</option>
+          <option value="Not Shortlisted For Round 2">Not Shortlisted For Round 2</option>
+          <option value="Selected For Final Round">Selected For Final Round</option>
       </select>
-
       <!--<button type="submit" class="zip">
           <img src="zip.png" alt="Save icon" />
       </button>-->
@@ -51,7 +51,7 @@ function load (token) {
   </div>
       `
       }
-      main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
+      document.getElementsByClassName('cont')[0].innerHTML = htmlString
     }
   })
 
@@ -110,6 +110,7 @@ function display (teamlist) {
       <div class="lrow">
       <div class="lrow1">
       <select name="qualifiedstatus" class="dropdown" onchange="patch1(this.value,'${teamlist[i]._id}')">
+          <option value="" disabled selected>Select Status</option>
           <option value="Shortlisted For DEVSOC'21">Shortlisted For DEVSOC'21</option>
           <option value="Not Shortlisted For DEVSOC'21">Not Shortlisted For DEVSOC'21</option>
           <option value="Shortlisted For Round 2">Shortlisted For Round 2</option>
@@ -168,7 +169,7 @@ function myfunction (a) {
         for (i = 0; i < teaminfo.users.length; i++) {
           memname += teaminfo.users[i].name + ' '
         }
-        newWindow.document.getElementById('options').innerHTML=
+        newWindow.document.getElementById('options').innerHTML =
         `
         <select name="qualifiedstatus" class="dropdown" id="updatestat" onchange="patch1(this.value,'${teaminfo._id}')">
       <option value="" disabled selected>Select Status</option>
@@ -179,6 +180,12 @@ function myfunction (a) {
       <option value="Selected For Final Round">Selected For Final Round</option>
     </select>
         `
+        let ii
+        for(ii=1;ii<6;ii++){
+          if(newWindow.document.getElementById('updatestat').options[ii].value==teaminfo.submission.status){
+            newWindow.document.getElementById('updatestat').options[ii].setAttribute('selected', true);
+          }
+        }
         newWindow.document.getElementById('names').innerHTML = memname
         newWindow.document.getElementById('submitted').innerHTML = '| ' + teaminfo.submission.status
         newWindow.document.getElementById('members').innerHTML = '| Members- ' + teaminfo.users.length
@@ -230,34 +237,8 @@ a.addEventListener('click', function () {
   }
 })
 
-// var update = document.getElementById("dropdown");
-// function show() {
-//   var strUser = update.options[update.selectedIndex].text;
-//   var sendata = {
-//     teamId: "606ddf7c4489410015adbdd7",
-//     status: JSON.stringify(strUser)
-//   }
-
-//   var xhr = new XMLHttpRequest();
-//   xhr.withCredentials = true;
-
-//   xhr.addEventListener("readystatechange", function () {
-//     if (this.readyState === 4) {
-//       console.log(this.responseText);
-//     }
-//   });
-
-//   xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
-
-//   xhr.send(sendata);
-// }
-// update.onchange = show();
-
-// adding logout functionality
 
 function logoutFunctn () {
   localStorage.clear()
   window.location.assign('index.html')
 }
-
-

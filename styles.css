@@ -65,6 +65,7 @@ body{
      linear-gradient(to right, #0400ff, #00b7ff) border-box;
     border: 5px solid transparent;
     border-radius: 1rem;
+    cursor:pointer;
     /* margin-top: -17.5%; */
 }
 

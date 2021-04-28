@@ -259,7 +259,27 @@
 
 
 
-
+   #logout-button{
+    position: absolute;
+    top: 10%;
+    right: 2.5%;
+    float: right;
+    width: 15%;
+    background-color: rgb(0, 0, 27);
+    /* width: 10%; */
+    padding: 10px 5px;
+    outline: none;
+    background: 
+     linear-gradient(rgb(0, 0, 27),rgb(0, 0, 27)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #0400ff, #00b7ff) border-box;
+    border: 5px solid transparent;
+    border-radius: 1rem;
+	color: whitesmoke;
+	font-weight: bolder;
+	font-size: 20px;
+	cursor:pointer;
+    /* margin-top: -17.5%; */
+}
 
 
 
