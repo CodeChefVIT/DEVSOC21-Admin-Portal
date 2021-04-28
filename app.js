@@ -1,12 +1,7 @@
 const base = 'https://devsoc-test.herokuapp.com'
 
-<<<<<<< HEAD
 // index
 function load (token) {
-=======
-//index
-function load(token) {
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
   xhr1.responseType = 'json'
@@ -27,11 +22,7 @@ function load(token) {
         }
         const id = teamlist[i].leader._id
         htmlString = htmlString +
-<<<<<<< HEAD
       `
-=======
-          `
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
       <div class="summary">
 
       <div class="text">
@@ -61,10 +52,6 @@ function load(token) {
       `
       }
       main.document.getElementsByClassName('cont')[0].innerHTML = htmlString
-<<<<<<< HEAD
-=======
-
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
     }
   })
 
@@ -97,22 +84,12 @@ function display(teamlist) {
       <p class="names">${memlist}</p>
       <div class="lrow">
       <div class="lrow1">
-<<<<<<< HEAD
       <select name="qualifiedstatus" class="dropdown" onchange="patch1(this.value,'${teamlist[i]._id}')">
           <option value="Shortlisted For DEVSOC'21">Shortlisted For DEVSOC'21</option>
           <option value="Not Shortlisted For DEVSOC'21">Not Shortlisted For DEVSOC'21</option>
           <option value="Shortlisted For Round 2">Shortlisted For Round 2</option>
           <option value="Not Shortlisted For Round 2">Not Shortlisted For Round 2</option>
           <option value="Selected For Final Round">Selected For Final Round</option>
-=======
-      <select name="qualifiedstatus" class="dropdown">
-          <option value="" disabled selected>Select Status</option>
-          <option>Shortlisted For DEVSOC'21</option>
-          <option>Not Shortlisted For DEVSOC'21</option>
-          <option>Shortlisted For Round 2</option>
-          <option>Not Shortlisted For Round 2</option>
-          <option>Selected For Final Round</option>
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
       </select>
 
       <!--<button type="submit" class="zip">
@@ -145,7 +122,6 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-<<<<<<< HEAD
 
 
 function patch1 (a, b) {
@@ -176,10 +152,6 @@ function patch1 (a, b) {
 
 // team_details
 function myfunction (a) {
-=======
-//team_details
-function myfunction(a) {
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = false
@@ -213,19 +185,8 @@ function myfunction(a) {
 
           const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html']
 
-<<<<<<< HEAD
           for (let k = 0; k < scripts.length; k++) {
             clean = clean.replaceAll(scripts[k], '')
-=======
-          let clean = window.DOMPurify.sanitize(marked(teaminfo.submission.description))
-          const reg = /script/ig;
-          /*|iframe|form|object|embed|link|head|meta*/
-
-          const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html'];
-
-          for (let k = 0; k < scripts.length; k++) {
-            clean = clean.replaceAll(scripts[k], "");
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
           }
 
           newWindow.console.log(clean)
@@ -262,30 +223,28 @@ a.addEventListener('click', function () {
 })
 
 
-<<<<<<< HEAD
-=======
-var update = document.getElementById("dropdown");
-function show() {
-  var strUser = update.options[update.selectedIndex].text;
-  var sendata = {
-    teamId: "606ddf7c4489410015adbdd7",
-    status: JSON.stringify(strUser)
-  }
+// var update = document.getElementById("dropdown");
+// function show() {
+//   var strUser = update.options[update.selectedIndex].text;
+//   var sendata = {
+//     teamId: "606ddf7c4489410015adbdd7",
+//     status: JSON.stringify(strUser)
+//   }
 
-  var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
+//   var xhr = new XMLHttpRequest();
+//   xhr.withCredentials = true;
 
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
-    }
-  });
+//   xhr.addEventListener("readystatechange", function () {
+//     if (this.readyState === 4) {
+//       console.log(this.responseText);
+//     }
+//   });
 
-  xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
+//   xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
 
-  xhr.send(sendata);
-}
-update.onchange = show();
+//   xhr.send(sendata);
+// }
+// update.onchange = show();
 
 
 //adding logout functionality
@@ -297,7 +256,7 @@ function logoutFunctn() {
   window.location.assign("index.html")
 }
 
+const updateselect=.document.getElementById('updatestat')
+console.log(updateselect)
 
 
-
->>>>>>> c9c64f1a7f9cabcfeb0fa616ea98f4823ff2dc42
