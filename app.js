@@ -1,12 +1,7 @@
-const base = 'https://devsoc-test.herokuapp.com'
+const base = 'https://devsoc-api.codechefvit.com'
 
-<<<<<<< HEAD
 // index
 function load (token) {
-=======
-//index
-function load(token) {
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
   const xhr1 = new XMLHttpRequest()
   xhr1.withCredentials = false
   xhr1.responseType = 'json'
@@ -27,11 +22,7 @@ function load(token) {
         }
         const id = teamlist[i].leader._id
         htmlString = htmlString +
-<<<<<<< HEAD
       `
-=======
-          `
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
       <div class="summary">
 
       <div class="text">
@@ -64,7 +55,7 @@ function load(token) {
     }
   })
 
-  xhr1.open('GET', 'https://devsoc-test.herokuapp.com/admin/all')
+  xhr1.open('GET', 'https://devsoc-api.codechefvit.com/admin/all')
   xhr1.setRequestHeader('Authorization', 'Bearer ' + token)
 
   xhr1.send()
@@ -131,7 +122,6 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-<<<<<<< HEAD
 
 
 function patch1 (a, b) {
@@ -152,7 +142,7 @@ function patch1 (a, b) {
     }
   })
 
-  xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.setRequestHeader('Content-Type', 'application/json')
 
@@ -162,10 +152,6 @@ function patch1 (a, b) {
 
 // team_details
 function myfunction (a) {
-=======
-//team_details
-function myfunction(a) {
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
   const jwttoken = window.localStorage.getItem('jwttoken')
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = false
@@ -200,11 +186,7 @@ function myfunction(a) {
           const scripts = ['script', 'iframe', 'form', 'object', 'embed', 'link', 'head', 'meta', 'alert', 'style', 'img', 'body', 'html']
 
           for (let k = 0; k < scripts.length; k++) {
-<<<<<<< HEAD
             clean = clean.replaceAll(scripts[k], '')
-=======
-            clean = clean.replaceAll(scripts[k], "");
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
           }
 
           newWindow.console.log(clean)
@@ -215,7 +197,7 @@ function myfunction(a) {
     }
   })
 
-  xhr.open('GET', 'https://devsoc-test.herokuapp.com/admin/team/' + a.toString())
+  xhr.open('GET', 'https://devsoc-api.codechefvit.com/admin/team/' + a.toString())
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.send()
 }
@@ -239,34 +221,6 @@ a.addEventListener('click', function () {
     display(filteredCharacters)
   }
 })
-
-
-// var update = document.getElementById("dropdown");
-// function show() {
-//   var strUser = update.options[update.selectedIndex].text;
-//   var sendata = {
-//     teamId: "606ddf7c4489410015adbdd7",
-//     status: JSON.stringify(strUser)
-//   }
-
-//   var xhr = new XMLHttpRequest();
-//   xhr.withCredentials = true;
-
-//   xhr.addEventListener("readystatechange", function () {
-//     if (this.readyState === 4) {
-//       console.log(this.responseText);
-//     }
-//   });
-
-//   xhr.open("PATCH", "{{https://devsoc-test.herokuapp.com}}/admin/status");
-
-//   xhr.send(sendata);
-// }
-// update.onchange = show();
-
-
-//adding logout functionality
-
 
 function logoutFunctn() {
   localStorage.clear();
@@ -294,12 +248,9 @@ function patch1(a, b) {
     }
   })
 
-<<<<<<< HEAD
-=======
-  xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.setRequestHeader('Content-Type', 'application/json')
 
   xhr.send(data)
 }
->>>>>>> db96ba1fe1b6239fb83ce8727e08111e04387ed0
