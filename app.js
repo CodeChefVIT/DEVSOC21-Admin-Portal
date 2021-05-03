@@ -19,7 +19,7 @@ function load (token) {
         let memlist = ''
         let j
         for (j = 0; j < teamlist[i].users.length; j++) {
-          memlist = memlist + ' ' + teamlist[i].users[j].name
+          memlist = memlist + ' | ' + teamlist[i].users[j].name
         }
         const id = teamlist[i].leader._id
         htmlString = htmlString +
@@ -94,7 +94,7 @@ function display (teamlist) {
     let memlist = ''
     let j
     for (j = 0; j < teamlist[i].users.length; j++) {
-      memlist = memlist + ' ' + teamlist[i].users[j].name
+      memlist = memlist + ' | ' + teamlist[i].users[j].name
     }
     const id = teamlist[i].leader._id
     htmlString = htmlString +
@@ -167,7 +167,7 @@ function myfunction (a) {
         let i
         let memname = ''
         for (i = 0; i < teaminfo.users.length; i++) {
-          memname += teaminfo.users[i].name + ' '
+          memname += teaminfo.users[i].name + ' | '
         }
         newWindow.document.getElementById('options').innerHTML =
         `
