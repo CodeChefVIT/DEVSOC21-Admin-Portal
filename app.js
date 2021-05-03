@@ -61,7 +61,32 @@ function load (token) {
   xhr1.send()
 }
 
-function display(teamlist) {
+function patch1 (a, b) {
+  console.log('yes')
+  const jwttoken = window.localStorage.getItem('jwttoken')
+  const data = JSON.stringify({
+    teamId: b,
+    status: a
+  })
+
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = false
+  xhr.responseType = 'json'
+
+  xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === 4) {
+      console.log(this.response)
+    }
+  })
+
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
+  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
+  xhr.setRequestHeader('Content-Type', 'application/json')
+
+  xhr.send(data)
+}
+
+function display (teamlist) {
   document.getElementById('count').innerHTML = teamlist.length
   let htmlString = ''
   let i
@@ -171,6 +196,17 @@ function myfunction (a) {
         for (i = 0; i < teaminfo.users.length; i++) {
           memname += teaminfo.users[i].name + ' '
         }
+        newWindow.document.getElementById('options').innerHTML=
+        `
+        <select name="qualifiedstatus" class="dropdown" id="updatestat" onchange="patch1(this.value,'${teaminfo._id}')">
+      <option value="" disabled selected>Select Status</option>
+      <option value="Shortlisted For DEVSOC'21">Shortlisted For DEVSOC'21</option>
+      <option value="Not Shortlisted For DEVSOC'21">Not Shortlisted For DEVSOC'21</option>
+      <option value="Shortlisted For Round 2">Shortlisted For Round 2</option>
+      <option value="Not Shortlisted For Round 2">Not Shortlisted For Round 2</option>
+      <option value="Selected For Final Round">Selected For Final Round</option>
+    </select>
+        `
         newWindow.document.getElementById('names').innerHTML = memname
         newWindow.document.getElementById('submitted').innerHTML = '| ' + teaminfo.submission.status
         newWindow.document.getElementById('members').innerHTML = '| Members- ' + teaminfo.users.length
@@ -227,8 +263,6 @@ function logoutFunctn() {
   window.location.assign("index.html")
 }
 
-const updateselect=.document.getElementById('updatestat')
-console.log(updateselect)
 
 function patch1(a, b) {
   console.log('yes')
