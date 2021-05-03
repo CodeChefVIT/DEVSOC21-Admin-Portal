@@ -23,7 +23,7 @@ function load (token) {
         }
         const id = teamlist[i].leader._id
         htmlString = htmlString +
-      `
+          `
       <div class="summary">
 
       <div class="text">
@@ -148,34 +148,6 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
-
-
-function patch1 (a, b) {
-  console.log('yes')
-  const jwttoken = window.localStorage.getItem('jwttoken')
-  const data = JSON.stringify({
-    teamId: b,
-    status: a
-  })
-
-  const xhr = new XMLHttpRequest()
-  xhr.withCredentials = false
-  xhr.responseType = 'json'
-
-  xhr.addEventListener('readystatechange', function () {
-    if (this.readyState === 4) {
-      console.log(this.response)
-    }
-  })
-
-  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
-  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
-  xhr.setRequestHeader('Content-Type', 'application/json')
-
-  xhr.send(data)
-}
-
-
 // team_details
 function myfunction (a) {
   const jwttoken = window.localStorage.getItem('jwttoken')
@@ -266,5 +238,7 @@ a.addEventListener('click', function () {
 })
 
 
-  xhr.send(data)
+function logoutFunctn () {
+  localStorage.clear()
+  window.location.assign('index.html')
 }
