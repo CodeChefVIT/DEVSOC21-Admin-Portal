@@ -1,5 +1,5 @@
 
-const base = 'https://devsoc-test.herokuapp.com'
+const base = 'https://devsoc-api.codechefvit.com'
 
 // index
 function load (token) {
@@ -23,7 +23,7 @@ function load (token) {
         }
         const id = teamlist[i].leader._id
         htmlString = htmlString +
-          `
+      `
       <div class="summary">
 
       <div class="text">
@@ -55,7 +55,7 @@ function load (token) {
     }
   })
 
-  xhr1.open('GET', 'https://devsoc-test.herokuapp.com/admin/all')
+  xhr1.open('GET', 'https://devsoc-api.codechefvit.com/admin/all')
   xhr1.setRequestHeader('Authorization', 'Bearer ' + token)
 
   xhr1.send()
@@ -79,7 +79,7 @@ function patch1 (a, b) {
     }
   })
 
-  xhr.open('PATCH', 'https://devsoc-test.herokuapp.com/admin/status')
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.setRequestHeader('Content-Type', 'application/json')
 
@@ -148,6 +148,34 @@ searchBar.addEventListener('keyup', (e) => {
     display(filteredCharacters)
   }
 })
+
+
+function patch1 (a, b) {
+  console.log('yes')
+  const jwttoken = window.localStorage.getItem('jwttoken')
+  const data = JSON.stringify({
+    teamId: b,
+    status: a
+  })
+
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = false
+  xhr.responseType = 'json'
+
+  xhr.addEventListener('readystatechange', function () {
+    if (this.readyState === 4) {
+      console.log(this.response)
+    }
+  })
+
+  xhr.open('PATCH', 'https://devsoc-api.codechefvit.com/admin/status')
+  xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
+  xhr.setRequestHeader('Content-Type', 'application/json')
+
+  xhr.send(data)
+}
+
+
 // team_details
 function myfunction (a) {
   const jwttoken = window.localStorage.getItem('jwttoken')
@@ -212,7 +240,7 @@ function myfunction (a) {
     }
   })
 
-  xhr.open('GET', 'https://devsoc-test.herokuapp.com/admin/team/' + a.toString())
+  xhr.open('GET', 'https://devsoc-api.codechefvit.com/admin/team/' + a.toString())
   xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken)
   xhr.send()
 }
@@ -238,7 +266,5 @@ a.addEventListener('click', function () {
 })
 
 
-function logoutFunctn () {
-  localStorage.clear()
-  window.location.assign('index.html')
+  xhr.send(data)
 }
