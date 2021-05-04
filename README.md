@@ -19,9 +19,18 @@
 ## Screenshots
 
 <center>
-<img src="https://i.ibb.co/SxnhsWd/Team-pic1.jpg" alt="Team-pic1" border="0">
-<img src="https://i.ibb.co/qsHMq57/Team-details-1.jpg" alt="Team-details-1" border="0">
-<img src="https://i.ibb.co/9gNFbCh/team-details.jpg" alt="team-details" border="0">
+	
+<img src="https://i.ibb.co/jZpF9hK/Login.png" alt="Login" border="0">
+	
+<img src="https://i.ibb.co/LYQMwMG/Search-teams.png" alt="Search-teams" border="0">
+
+<img src="https://i.ibb.co/G229Qym/Team-list-1.png" alt="Team-list-1" border="0">
+
+<img src="https://i.ibb.co/d6k1d45/Team-details-1.png" alt="Team-details-1" border="0">
+
+<img src="https://i.ibb.co/Mf6ssw6/Team-project-details.png" alt="Team-project-details" border="0">
+
+
 </center>
 
 
