@@ -18,6 +18,11 @@
 
 ## Screenshots
 
+<center>
+<img src="https://i.ibb.co/SxnhsWd/Team-pic1.jpg" alt="Team-pic1" border="0">
+<img src="https://i.ibb.co/qsHMq57/Team-details-1.jpg" alt="Team-details-1" border="0">
+<img src="https://i.ibb.co/9gNFbCh/team-details.jpg" alt="team-details" border="0">
+</center>
 
 
 
